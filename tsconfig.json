@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@pages/*": ["./src/app/(pages)/*"],
+      "@components/*": ["./src/components/*"],
+      "@commonComponents/*": ["./src/components/common/*"],
+      "@pageComponents/*": ["./src/components/pages/*"],
+      "@config/*": ["./src/config/*"],
+      "@data/*": ["./src/data/*"],
+      "@layouts/*" : ["./src/components/layout/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@api/*": ["./src/api/clients/*"],
+      "@service/*": ["./src/api/service/*"],
+      "@model/*": ["./src/api/model/*"],
+      "@hooks/*": ["./src/state/hooks/*"],
+      "@state/*": ["./src/state/slices/*"],
+      "@constants/*": ["./src/data/constant/*"],
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
