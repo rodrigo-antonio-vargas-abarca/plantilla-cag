@@ -1,9 +1,9 @@
 "use client"
-import PageContainer from "@pages/inicio/PageContainer";
+import PaginaInicio from "@pageComponents/inicio/PaginaInicio";
 import React from "react";
 
 const SamplePage = () => {
-  return <PageContainer/>;
+  return <PaginaInicio/>;
 };
 
 export default SamplePage;
