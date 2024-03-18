@@ -2,8 +2,8 @@
 import PaginaCompanias from "@pageComponents/general/movimientos/companias/PaginaCompanias";
 import React from "react";
 
-const CompaniasPage = () => {
+const Pagina = () => {
     return <PaginaCompanias />
 };
 
-export default CompaniasPage;
+export default Pagina;

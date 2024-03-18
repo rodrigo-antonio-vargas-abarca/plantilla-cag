@@ -1,9 +1,9 @@
 "use client"
-import ArticulosContainer from "@pageComponents/inventario/movimientos/articulos/PaginaArticulos";
+import PaginaArticulos from "@pageComponents/inventario/movimientos/articulos/PaginaArticulos";
 import React from "react";
 
-const ArticulosPage = () => {
-    return <ArticulosContainer />
+const Pagina = () => {
+    return <PaginaArticulos />
 };
 
-export default ArticulosPage;
+export default Pagina;
