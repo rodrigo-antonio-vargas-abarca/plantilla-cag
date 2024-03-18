@@ -99,7 +99,8 @@ La estructura de proyecto es la siguiente:
   en ese contexto.
 - `/slices`: Contiene los archivos de definición
   de [`slices`](https://react-redux.js.org/tutorials/typescript-quick-start#define-slice-state-and-action-types) donde
-  se definen las variables de estado y las acciones que modifican el estado de la aplicación.
+  se definen las variables de estado y las acciones que modifican el estado de la aplicación. Estos archivos están
+  organizados de acuerdo a la lógica del negocio `(módulo/archivo)`.
 - `Rootreducer.tsx`: Contiene el archivo de configuración de los reductores de los
   slices [`combinados`](https://redux.js.org/api/combinereducers/) que será usado por el store principal.
 - `Store.tsx`: Contiene el archivo
@@ -159,22 +160,24 @@ organización de este directorio de componentes está dada por la lógica del ne
 
 const PaginaEjemplo = () => {
 
-    // Si se requiere dispatch para ejecutar las acciones que modifican el estado
+    // Si se requiere dispatch para ejecutar las acciones que modifican el estado. 
+    // Utilice el hook useAppDispatch para obtener el dispatch. 
     const dispatch = useAppDispatch();
 
-    // TODO: Obtener el estado de la página
+    // Si se requiere, obtener el estado de la página con el hook useAppSelector.
+    const variable = useAppSelector((state) => state.articulos.variable);
 
     // Acciones de la página
     const limpiarEntidadSeleccionada = () => {
-        // TODO: Código del evento limpiar
+        // TODO: Código del evento limpiar, si requiere modificación de estado usar dispatch(accion).
     }
 
     const eliminarEntidadSeleccionada = () => {
-        // TODO: Código del evento eliminar
+        // TODO: Código del evento eliminar, si requiere modificación de estado usar dispatch(accion)
     }
 
     const guardarEntidadSeleccionada = (articulo: ArticuloDto) => {
-        // TODO: Código del evento guardar
+        // TODO: Código del evento guardar, si requiere modificación de estado usar dispatch(accion)
     };
 
     // Variable que define los eventos de la página, requeridos por el contenedor genérico
@@ -201,8 +204,124 @@ export default PaginaEjemplo;
 Nota: El componente `ContenedorPagina` es un componente genérico que maneja el título y los eventos de la página. Este
 componente se encarga de asignar el título de la página, los breadcums y los eventos de la misma.
 
-Una vez definido el contenido de la página, puede acceder a ella en la ruta [http://localhost:3000/modulo/ejemplo](http://localhost:3000/modulo/ejemplo) ver los componentes definidos en el contenedor
+Una vez definido el contenido de la página, puede acceder a ella en la
+ruta [http://localhost:3000/modulo/ejemplo](http://localhost:3000/modulo/ejemplo) ver los componentes definidos en el
+contenedor
 renderizados.
+
+## Manejando el estado de la aplicación
+
+Para manejar el estado de la aplicación se utiliza la librería [`redux`](https://react-redux.js.org/). La configuración
+de los reductores de los slices combinados se encuentra en el archivo `Rootreducer.tsx` y el almacenamiento de estados
+centralizado de la aplicación se encuentra en el archivo `Store.tsx`.
+
+La estructura de manejo de estado está organizada mediante el uso
+de [`slices`](https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#writing-slices) organizados de acuerdo a la lógica del negocio (modulo/[slice].tsx), donde cada slice define
+una porción del estado de la aplicación, es decir, una abstracción de la definición de las
+variables de estado y las acciones que modifican el estado de la aplicación. En este
+ejemplo se define el slice `ejemplo` con la variable `variable` y la acción `setVariable` que modifica el estado de la
+variable `variable`. Este patrón nos brinda una simplificación en la definición de
+los [`reductores`](https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers#writing-reducers) y las
+acciones que
+modifican el estado de la aplicación.
+
+Para definir un nuevo slice, se debe crear un archivo en la carpeta `/state/slices/[modulo]/` con el nombre del slice y
+su respectiva
+definición. Ejemplo:
+
+```tsx
+// state/slices/modulo/ejemploSlice.tsx
+
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
+// Definición de la interfaz del estado
+interface EstadoEjemplo {
+    variable: string;
+}
+
+// Estado inicial
+const initialState: EstadoEjemplo = {
+    variable: "", // Estado inicial de la variable
+};
+
+// Definición del slice
+const ejemploSlice = createSlice({
+    name: "ejemplo",
+    initialState,
+    reducers: {
+        // Acción que modifica el estado de la variable
+        setVariable: (state, action: PayloadAction<string>) => {
+            state.variable = action.payload;
+        },
+    },
+});
+
+// Exportación de las acciones del slice
+export const {setVariable} = ejemploSlice.actions;
+
+// Exportación del reductor del slice
+export default ejemploSlice.reducer;
+
+```
+
+Una vez definido el slice, se deben agregar sus reductores al archivo `Rootreducer.tsx` para que sea combinado con los
+demás slices y
+pueda ser utilizado por el store principal.
+
+```tsx
+// state/slices/rootreducer.tsx
+
+import {combineReducers} from "@reduxjs/toolkit";
+import ejemploSlice from "./slices/modulo/ejemploSlice";
+
+// Combinación de los reductores de los slices
+const rootReducer = combineReducers({
+    // ...otros slices
+    ejemplo: ejemploSlice, // Reductor del slice ejemplo
+});
+
+export type RootState = ReturnType<typeof rootReducer>;
+
+export default rootReducer;
+
+```
+
+Una vez definido el slice y agregado al archivo `Rootreducer.tsx`, se puede utilizar el hook `useAppDispatch` para
+obtener el dispatch y ejecutar las acciones que modifican el estado de la aplicación. Ejemplo:
+
+```tsx
+// @pageComponents/modulo/movimientos/ejemplo/PaginaEjemplo.tsx
+
+import {useAppDispatch, useAppSelector} from "@state/hooks";
+import {setVariable} from "@state/slices/modulo/ejemploSlice";
+
+const PaginaEjemplo = () => {
+
+    // Obtener el dispatch para ejecutar las acciones que modifican el estado
+    const dispatch = useAppDispatch();
+
+    // Obtener el estado de la página
+    const variable = useAppSelector((state) => state.ejemplo.variable);
+
+    const limpiarEntidadSeleccionada = () => {
+        // Utilizando reductor setVariable del slice ejemplo
+        dispatch(setVariable(""));
+    }
+
+    const eventosPagina: EventosPaginaProps = {
+        limpiar: limpiarEntidadSeleccionada,
+    }
+
+    return (
+        <ContenedorPagina titulo={"Ejemplo"} eventos={eventosPagina}>
+            <Col>
+            </Col>
+        </ContenedorPagina>
+    );
+};
+
+export default PaginaEjemplo;
+```
 
 ## Más referencias y documentación
 
