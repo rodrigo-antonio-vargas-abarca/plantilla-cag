@@ -2,8 +2,8 @@
 import PaginaInicio from "@pageComponents/inicio/PaginaInicio";
 import React from "react";
 
-const SamplePage = () => {
+const Pagina = () => {
   return <PaginaInicio/>;
 };
 
-export default SamplePage;
+export default Pagina;
