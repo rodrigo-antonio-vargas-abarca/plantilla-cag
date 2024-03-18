@@ -6,12 +6,22 @@ interface SelectFormikProps extends SelectHTMLAttributes<HTMLSelectElement> {
     formulario: any;
     clave: string;
     opciones: OpcionSelectProps[];
+    etiqueta?: string;
     placeholder?: string;
     onChange?: (value: any) => void;
     onBlur?: (value: any) => void;
 }
 
-const SelectFormik = ({formulario, clave, opciones, placeholder, onChange, onBlur, ...rest}: SelectFormikProps) => {
+const SelectFormik = ({
+                          formulario,
+                          clave,
+                          opciones,
+                          etiqueta,
+                          placeholder,
+                          onChange,
+                          onBlur,
+                          ...rest
+                      }: SelectFormikProps) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         formulario.handleChange(e);
@@ -29,6 +39,7 @@ const SelectFormik = ({formulario, clave, opciones, placeholder, onChange, onBlu
 
     return (
         <div>
+            {etiqueta && <label>{etiqueta}</label>}
             <select
                 name={clave}
                 value={formulario.values[clave]}

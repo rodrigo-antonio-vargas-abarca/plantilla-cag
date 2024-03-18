@@ -4,12 +4,13 @@ import {MensajeErrorFormik} from "@commonComponents/formularios/formik/MensajeEr
 interface TextareaFormikProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     formulario: any;
     clave: string;
+    etiqueta?: string;
     placeholder?: string;
     onChange?: (value: any) => void;
     onBlur?: (value: any) => void;
 }
 
-const TextareaFormik = ({formulario, clave, placeholder, onChange, onBlur, ...rest}: TextareaFormikProps) => {
+const TextareaFormik = ({formulario, clave, etiqueta,placeholder, onChange, onBlur, ...rest}: TextareaFormikProps) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         formulario.handleChange(e);
@@ -27,6 +28,7 @@ const TextareaFormik = ({formulario, clave, placeholder, onChange, onBlur, ...re
 
     return (
         <div>
+            {etiqueta && <label>{etiqueta}</label>}
             <textarea
                 {...rest}
                 className={"form-control"}
