@@ -165,23 +165,23 @@ const PaginaEjemplo = () => {
     // TODO: Obtener el estado de la página
 
     // Acciones de la página
-    const limpiarArticuloSeleccionado = () => {
+    const limpiarEntidadSeleccionada = () => {
         // TODO: Código del evento limpiar
     }
 
-    const eliminarArticuloSeleccionado = () => {
+    const eliminarEntidadSeleccionada = () => {
         // TODO: Código del evento eliminar
     }
 
-    const guardarArticuloSeleccionado = (articulo: ArticuloDto) => {
+    const guardarEntidadSeleccionada = (articulo: ArticuloDto) => {
         // TODO: Código del evento guardar
     };
 
     // Variable que define los eventos de la página, requeridos por el contenedor genérico
     const eventosPagina: EventosPaginaProps = {
-        limpiar: limpiarArticuloSeleccionado,
-        guardar: guardarArticuloSeleccionado,
-        eliminar: eliminarArticuloSeleccionado
+        limpiar: limpiarEntidadSeleccionada,
+        guardar: guardarEntidadSeleccionada,
+        eliminar: eliminarEntidadSeleccionada
     }
 
     return (
