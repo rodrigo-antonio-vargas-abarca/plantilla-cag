@@ -216,7 +216,8 @@ de los reductores de los slices combinados se encuentra en el archivo `Rootreduc
 centralizado de la aplicación se encuentra en el archivo `Store.tsx`.
 
 La estructura de manejo de estado está organizada mediante el uso
-de [`slices`](https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#writing-slices) organizados de acuerdo a la lógica del negocio (modulo/[slice].tsx), donde cada slice define
+de [`slices`](https://redux.js.org/tutorials/fundamentals/part-8-modern-redux#writing-slices) organizados de acuerdo a
+la lógica del negocio (modulo/[slice].tsx), donde cada slice define
 una porción del estado de la aplicación, es decir, una abstracción de la definición de las
 variables de estado y las acciones que modifican el estado de la aplicación. En este
 ejemplo se define el slice `ejemplo` con la variable `variable` y la acción `setVariable` que modifica el estado de la
@@ -236,24 +237,23 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 // Definición de la interfaz del estado
 interface EstadoEjemplo {
-    variable: string;
+  variable: string;
 }
 
 // Estado inicial
-const initialState: EstadoEjemplo = {
-    variable: "", // Estado inicial de la variable
+const estadoInicial: EstadoEjemplo = {
+  variable: "", // Estado inicial de la variable
 };
 
 // Definición del slice
 const ejemploSlice = createSlice({
-    name: "ejemplo",
-    initialState,
-    reducers: {
-        // Acción que modifica el estado de la variable
-        setVariable: (state, action: PayloadAction<string>) => {
-            state.variable = action.payload;
-        },
+  name: "ejemplo", // Nombre del slice
+  estadoInicial, // Estado inicial del slice
+  reducers: { // Definición de las acciones que modifican el estado del slice
+    setVariable: (state, action: PayloadAction<string>) => {
+      state.variable = action.payload; // Modificación del estado de la variable
     },
+  },
 });
 
 // Exportación de las acciones del slice
@@ -286,8 +286,9 @@ export default rootReducer;
 
 ```
 
-Una vez definido el slice y agregado al archivo `Rootreducer.tsx`, se puede utilizar el hook `useAppDispatch` para
-obtener el dispatch y ejecutar las acciones que modifican el estado de la aplicación. Ejemplo:
+Una vez definido el slice y agregado al archivo `rootreducer.tsx`, se puede utilizar el hook `useAppDispatch` para
+obtener el dispatch que permite ejecutar las acciones que modifican el estado de la aplicación y el hook `useAppselector`
+para obtener valores del estado de la aplicación, Ejemplo:
 
 ```tsx
 // @pageComponents/modulo/movimientos/ejemplo/PaginaEjemplo.tsx
