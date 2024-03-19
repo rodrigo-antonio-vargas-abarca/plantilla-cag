@@ -6,7 +6,7 @@ const opciones = {
     confirmButtonText: 'Confirmar',
     cancelButtonText: 'Cancelar',
     showCancelButton: true,
-    confirmButtonColor: '#056B01',
+    confirmButtonColor: '#056B01', // TODO: Cambiar por el color de la aplicación
     cancelButtonColor: '#d33',
     toast: true
 }

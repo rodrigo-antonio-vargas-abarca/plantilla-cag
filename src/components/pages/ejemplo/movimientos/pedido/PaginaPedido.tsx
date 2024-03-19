@@ -2,7 +2,6 @@ import React from 'react';
 import {EventosPaginaProps} from "@data/props/Paginas";
 import {ContenedorPagina} from "@layouts/ContenedorPagina";
 import FormularioPedidos from "@pageComponents/ejemplo/movimientos/pedido/FormularioPedidos";
-import {Col} from "reactstrap";
 import Mensajes from "@utils/Mensajes";
 import {useFormik} from "formik";
 import esquemaValidacion from "@/validation/ejemplo/ValidacionPedido";
