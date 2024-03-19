@@ -1,8 +1,9 @@
 import ArticuloDto from "@model/inventario/ArticuloDto";
+import DetallePedidoDto from "@model/ejemplo/DetallePedidoDto";
 
 export default interface PedidoDto {
     id: number;
-    products: ArticuloDto[];
+    products: DetallePedidoDto[];
     total: number;
     discountedTotal: number;
     userId: number;

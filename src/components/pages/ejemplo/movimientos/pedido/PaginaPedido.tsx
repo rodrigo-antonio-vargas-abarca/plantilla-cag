@@ -8,7 +8,7 @@ import {useFormik} from "formik";
 import esquemaValidacion from "@/validation/ejemplo/ValidacionPedido";
 import {useAppDispatch, useAppSelector} from "@hooks/common/State";
 import {seleccionarPedido, eliminarPedido, agregarPedido, actualizarPedidos} from "@state/ejemplo/PedidosSlice";
-import ArticulosPedido from "@pageComponents/ejemplo/movimientos/pedido/ArticulosPedido";
+import TablaDetallesPedido from "@pageComponents/ejemplo/movimientos/pedido/TablaDetallesPedido";
 import TablaPedidos from "@pageComponents/ejemplo/movimientos/pedido/TablaPedidos";
 
 interface PaginaPedidoProps {
@@ -45,7 +45,6 @@ function PaginaPedido({}: PaginaPedidoProps) {
     const guardarPedidoSeleccionado = () => {
         try {
             formulario.submitForm();
-            Mensajes.exito("Pedido guardado");
         } catch (e) {
             Mensajes.error("Error al enviar el formulario de pedido");
         }
@@ -76,7 +75,10 @@ function PaginaPedido({}: PaginaPedidoProps) {
     return (
         <ContenedorPagina titulo={"Pedidos"} eventos={eventos}>
             {!buscando ?
-                <FormularioPedidos formulario={formulario}/> :
+                <>
+                    <FormularioPedidos formulario={formulario}/>
+                    <TablaDetallesPedido/>
+                </> :
                 <TablaPedidos/>
             }
         </ContenedorPagina>

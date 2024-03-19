@@ -18,10 +18,12 @@ const tablaProps: TablaProps = {
     titulo: "Lista de pedidos",
     subtitulo: "Lista de pedidos obtenida desde la base de datos",
     encabezados: [
-        {etiqueta: "ID", ancho: 10},
-        {etiqueta: "Código", ancho: 20},
-        {etiqueta: "Descripción", ancho: 45},
-        {etiqueta: "Principal", ancho: 25},
+        {etiqueta: "Código", ancho: 15},
+        {etiqueta: "Total", ancho: 15},
+        {etiqueta: "Cliente", ancho: 15},
+        {etiqueta: "Descuento", ancho: 15},
+        {etiqueta: "Total productos", ancho: 15},
+        {etiqueta: "Cantidad total", ancho: 15},
     ],
     cantidadElementos: 10,
     tamano: TamanoTabla.PEQUENA,
@@ -65,6 +67,8 @@ function TablaPedidos({}: TablaPedidosProps) {
                     <td>{pedido.total}</td>
                     <td>{pedido.userId}</td>
                     <td>{pedido.discountedTotal}</td>
+                    <td>{pedido.totalProducts}</td>
+                    <td>{pedido.totalQuantity}</td>
                     <td><Boton onClick={() => handleSeleccionar(pedido.id)} icono={Iconos.SELECCIONAR}/></td>
                 </tr>
             ))}
