@@ -39,8 +39,8 @@ const InputFormik = ({
     }
 
     return (
-        <div>
-            {etiqueta && <label>{etiqueta}</label>}
+        <div className={"mb-1"}>
+            {etiqueta && <label className={"font-weight-light"}>{etiqueta}</label>}
             <div className="input-group">
                 <input
                     {...rest}

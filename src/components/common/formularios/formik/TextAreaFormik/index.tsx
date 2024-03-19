@@ -27,8 +27,8 @@ const TextareaFormik = ({formulario, clave, etiqueta,placeholder, onChange, onBl
     }
 
     return (
-        <div>
-            {etiqueta && <label>{etiqueta}</label>}
+        <div className={"mb-1"}>
+            {etiqueta && <label className={"font-weight-light"}>{etiqueta}</label>}
             <textarea
                 {...rest}
                 className={"form-control"}

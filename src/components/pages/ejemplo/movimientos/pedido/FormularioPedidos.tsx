@@ -3,10 +3,10 @@ import {useAppDispatch, useAppSelector} from "@hooks/common/State";
 import FormularioFormik from "@commonComponents/formularios/formik/ContenedorFormik/FormularioFormik";
 import {Col, Row} from "reactstrap";
 import InputFormik from "@commonComponents/formularios/formik/InputFormik";
-import {asignarPedido, seleccionarNuevoPedido, seleccionarPedido} from "@state/ejemplo/PedidosSlice";
+import {setPedido, crearPedidoNuevo, seleccionarPedido} from "@state/ejemplo/PedidosSlice";
 import Mensajes from "@utils/Mensajes";
 import {PedidoService} from "@/api/services/ejemplo/PedidoService";
-import {toggleBuscando} from "@state/ejemplo/PedidosSlice";
+import {cambiarBuscando} from "@state/ejemplo/PedidosSlice";
 
 interface FormularioPedidoProps {
     formulario: any;
@@ -26,9 +26,9 @@ function FormularioPedidos({formulario = undefined}: FormularioPedidoProps) {
     const buscarPedido = () => {
         try {
             PedidoService.getPedido(formulario.values.id).then((response) => {
-                dispatch(asignarPedido(response))
+                dispatch(setPedido(response))
             }).catch((error) => {
-                dispatch(seleccionarNuevoPedido(formulario.values.id));
+                dispatch(crearPedidoNuevo(formulario.values.id));
             })
         } catch (e) {
             console.error("Error al buscar el pedido");
@@ -37,7 +37,7 @@ function FormularioPedidos({formulario = undefined}: FormularioPedidoProps) {
 
     const toogleBuscar = () => {
         try {
-            dispatch(toggleBuscando());
+            dispatch(cambiarBuscando());
         } catch (e) {
             Mensajes.error("Error al abrir la página de búsqueda");
         }

@@ -1,6 +1,5 @@
 import Swal from "sweetalert2";
 import {TipoAlerta} from "@data/props/Alertas";
-import Colores from "@data/constants/Colores";
 
 const opciones = {
     confirmButtonText: 'Confirmar',

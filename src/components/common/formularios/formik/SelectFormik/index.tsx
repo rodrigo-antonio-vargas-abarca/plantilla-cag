@@ -38,8 +38,8 @@ const SelectFormik = ({
     };
 
     return (
-        <div>
-            {etiqueta && <label>{etiqueta}</label>}
+        <div className={"mb-1"}>
+            {etiqueta && <label className={"font-weight-light"}>{etiqueta}</label>}
             <select
                 name={clave}
                 value={formulario.values[clave]}

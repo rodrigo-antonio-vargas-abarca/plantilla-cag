@@ -6,9 +6,10 @@ import Mensajes from "@utils/Mensajes";
 import {useFormik} from "formik";
 import esquemaValidacion from "@/validation/ejemplo/ValidacionPedido";
 import {useAppDispatch, useAppSelector} from "@hooks/common/State";
-import {seleccionarPedido, eliminarPedido, agregarPedido, actualizarPedidos} from "@state/ejemplo/PedidosSlice";
+import {seleccionarPedido, eliminarPedidoLista, agregarPedidoLista, setListaPedidos} from "@state/ejemplo/PedidosSlice";
 import TablaDetallesPedido from "@pageComponents/ejemplo/movimientos/pedido/TablaDetallesPedido";
 import TablaPedidos from "@pageComponents/ejemplo/movimientos/pedido/TablaPedidos";
+import Alertas from "@utils/Alertas";
 
 interface PaginaPedidoProps {
 
@@ -18,19 +19,22 @@ function PaginaPedido({}: PaginaPedidoProps) {
 
     const dispatch = useAppDispatch();
     const pedidoSeleccionado = useAppSelector((state) => state.pedidos.pedidoSeleccionado);
-    const editando = useAppSelector((state) => state.pedidos.isSeleccionado);
-    const buscando = useAppSelector((state) => state.pedidos.isBuscando);
+    const isEditando = useAppSelector((state) => state.pedidos.isSeleccionado);
+    const isBuscando = useAppSelector((state) => state.pedidos.isBuscando);
 
     const enviarFormularioPedido = (values: any) => {
         try {
-            if (editando) {
-                dispatch(actualizarPedidos(values));
-                Mensajes.exito("Pedido actualizado");
+            if (isEditando) {
+                // TODO: Implementar llamado al service para actualizar el pedido
+                dispatch(setListaPedidos(values));
+                Mensajes.exito("Pedido modificado");
             } else {
-                dispatch(agregarPedido(values));
-                Mensajes.exito("Pedido guardado");
+                // TODO: Implementar llamado al service para agregar el pedido
+                dispatch(agregarPedidoLista(values));
+                Mensajes.exito("Pedido agregado");
             }
         } catch (e) {
+            console.log(e);
             Mensajes.error("Error al guardar el pedido");
         }
     }
@@ -51,7 +55,13 @@ function PaginaPedido({}: PaginaPedidoProps) {
 
     const eliminarPedidoSeleccionado = () => {
         try {
-            dispatch(eliminarPedido(pedidoSeleccionado.id));
+            Alertas.advertencia("Eliminar pedido", "¿Está seguro que desea eliminar el pedido?").then((result) => {
+                if (result.isConfirmed) {
+                    // TODO: Implementar llamado al service para eliminar el pedido
+                    dispatch(eliminarPedidoLista(pedidoSeleccionado.id));
+                    Mensajes.exito("Pedido eliminado");
+                }
+            })
         } catch (e) {
             Mensajes.error("Error al eliminar el pedido");
         }
@@ -73,7 +83,7 @@ function PaginaPedido({}: PaginaPedidoProps) {
 
     return (
         <ContenedorPagina titulo={"Pedidos"} eventos={eventos}>
-            {!buscando ?
+            {!isBuscando ?
                 <>
                     <FormularioPedidos formulario={formulario}/>
                     <TablaDetallesPedido/>

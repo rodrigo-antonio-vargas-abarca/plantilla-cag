@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {TablaProps} from "@data/props/Tablas";
 import {TamanoTabla} from "@data/constants/Tamanos";
 import Tabla from "@commonComponents/tablas/Tabla";
-import {actualizarPedidos, seleccionarPedido} from "@state/ejemplo/PedidosSlice";
+import {setListaPedidos, seleccionarPedido} from "@state/ejemplo/PedidosSlice";
 import Mensajes from "@utils/Mensajes";
 import {useAppDispatch, useAppSelector} from "@hooks/common/State";
 import {PedidoService} from "@/api/services/ejemplo/PedidoService";
@@ -40,7 +40,7 @@ function TablaPedidos({}: TablaPedidosProps) {
         const getPedidos = async () => {
             try {
                 const pedidos = await PedidoService.getPedidos();
-                dispatch(actualizarPedidos(pedidos));
+                dispatch(setListaPedidos(pedidos));
             } catch (error) {
                 Mensajes.error("Error al obtener las compañías" + error);
                 console.log(error);
