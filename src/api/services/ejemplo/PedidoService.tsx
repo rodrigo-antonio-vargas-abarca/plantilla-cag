@@ -30,7 +30,7 @@ export const PedidoService = {
     },
     editarPedido: async (pedido: any) => {
         try {
-            return await PedidoApi.putPedido(pedido).then((response) => {
+            return await PedidoApi.putPedido(pedido.id, {"products": pedido.products}).then((response) => {
                 return response;
             });
         } catch (error) {

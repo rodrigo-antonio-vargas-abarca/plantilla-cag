@@ -1,5 +1,6 @@
 import ApiBase, {OpcionesApi} from "@api/common/ApiBase";
 import PedidoDto from "@model/ejemplo/PedidoDto";
+import ProductoDto from "@model/ProductoDto";
 
 const opciones: OpcionesApi = {
     baseURL: 'https://dummyjson.com/',
@@ -34,8 +35,8 @@ export default class PedidoApi extends ApiBase {
         return await this.getInstance().post(`/carts/add`, pedido);
     }
 
-    static async putPedido(pedido: PedidoDto) {
-        return await this.getInstance().put(`/carts/${pedido.id}`, pedido);
+    static async putPedido(id : number, productos: {products: ProductoDto[]}) {
+        return await this.getInstance().put(`/carts/${id}`, productos);
     }
 
     static async deletePedido(id: number) {
