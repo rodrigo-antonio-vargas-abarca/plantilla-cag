@@ -24,11 +24,11 @@ export function crearPedido(
             discountedPrice: 0,
             thumbnail: "https://dummyimage.com/600x400/000/fff"
         }],
-        total = 0,
+        total = 250,
         discountedTotal = 0,
-        userId = 0,
-        totalProducts = 0,
-        totalQuantity = 0
+        userId = 1,
+        totalProducts = 5,
+        totalQuantity = 1
     }: Partial<PedidoDto> = {}): PedidoDto {
     return {
         id,
