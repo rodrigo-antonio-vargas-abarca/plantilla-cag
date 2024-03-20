@@ -6,10 +6,18 @@ import Mensajes from "@utils/Mensajes";
 import {useFormik} from "formik";
 import esquemaValidacion from "@/validation/ejemplo/ValidacionPedido";
 import {useAppDispatch, useAppSelector} from "@hooks/common/State";
-import {seleccionarPedido, eliminarPedidoLista, agregarPedidoLista, setListaPedidos} from "@state/ejemplo/PedidosSlice";
+import {
+    seleccionarPedido,
+    eliminarPedidoLista,
+    agregarPedidoLista,
+    setListaPedidos,
+    editarPedidoLista
+} from "@state/ejemplo/PedidosSlice";
 import TablaDetallesPedido from "@pageComponents/ejemplo/movimientos/pedido/TablaDetallesPedido";
 import TablaPedidos from "@pageComponents/ejemplo/movimientos/pedido/TablaPedidos";
 import Alertas from "@utils/Alertas";
+import {PedidoService} from "@/api/services/ejemplo/PedidoService";
+import PedidoDto from "@model/ejemplo/PedidoDto";
 
 interface PaginaPedidoProps {
 
@@ -22,16 +30,24 @@ function PaginaPedido({}: PaginaPedidoProps) {
     const isEditando = useAppSelector((state) => state.pedidos.isSeleccionado);
     const isBuscando = useAppSelector((state) => state.pedidos.isBuscando);
 
-    const enviarFormularioPedido = (values: any) => {
+    const enviarFormularioPedido = (values: PedidoDto) => {
         try {
             if (isEditando) {
-                // TODO: Implementar llamado al service para actualizar el pedido
-                dispatch(setListaPedidos(values));
-                Mensajes.exito("Pedido modificado");
+                PedidoService.editarPedido(values).then(() => {
+                    dispatch(editarPedidoLista(values));
+                    Mensajes.exito("Pedido editado");
+                }).catch((error) => {
+                    console.error("Error al editar el pedido", error);
+                    Mensajes.error("Error al editar el pedido");
+                });
             } else {
-                // TODO: Implementar llamado al service para agregar el pedido
-                dispatch(agregarPedidoLista(values));
-                Mensajes.exito("Pedido agregado");
+                PedidoService.agregarPedido(values).then(() => {
+                    dispatch(agregarPedidoLista(values));
+                    Mensajes.exito("Pedido agregado");
+                }).catch((error) => {
+                    console.error("Error al crear el pedido", error);
+                    Mensajes.error("Error al crear el pedido");
+                });
             }
         } catch (e) {
             console.log(e);
@@ -57,9 +73,13 @@ function PaginaPedido({}: PaginaPedidoProps) {
         try {
             Alertas.advertencia("Eliminar pedido", "¿Está seguro que desea eliminar el pedido?").then((result) => {
                 if (result.isConfirmed) {
-                    // TODO: Implementar llamado al service para eliminar el pedido
-                    dispatch(eliminarPedidoLista(pedidoSeleccionado.id));
-                    Mensajes.exito("Pedido eliminado");
+                    PedidoService.eliminarPedido(pedidoSeleccionado.id).then(() => {
+                        dispatch(eliminarPedidoLista(pedidoSeleccionado.id));
+                        Mensajes.exito(`Pedido ${pedidoSeleccionado.id} eliminado`);
+                    }).catch((error) => {
+                        console.error(`Error al eliminar el pedido ${pedidoSeleccionado.id}`, error);
+                        Mensajes.error("Error al eliminar el pedido");
+                    });
                 }
             })
         } catch (e) {
@@ -82,7 +102,7 @@ function PaginaPedido({}: PaginaPedidoProps) {
     }
 
     return (
-        <ContenedorPagina titulo={"Pedidos"} eventos={eventos}>
+        <ContenedorPagina titulo={`Pedidos`} eventos={eventos} triggerActualizaEventos={pedidoSeleccionado}>
             {!isBuscando ?
                 <>
                     <FormularioPedidos formulario={formulario}/>

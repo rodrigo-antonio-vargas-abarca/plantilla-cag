@@ -77,6 +77,7 @@ const pedidosSlice = createSlice({
         },
         buscarPedido(state, action: PayloadAction<string>) {
             state.pedidoSeleccionado = state.pedidos.find(pedido => pedido.id === parseInt(action.payload, 10)) || crearPedido();
+            state.isSeleccionado = true;
         },
         cambiarBuscando(state) {
             state.isBuscando = !state.isBuscando;

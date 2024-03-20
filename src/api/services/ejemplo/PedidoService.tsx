@@ -19,4 +19,31 @@ export const PedidoService = {
             throw error;
         }
     },
+    agregarPedido: async (pedido: any) => {
+        try {
+            return await PedidoApi.postPedido(pedido).then((response) => {
+                return response;
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
+    editarPedido: async (pedido: any) => {
+        try {
+            return await PedidoApi.putPedido(pedido).then((response) => {
+                return response;
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
+    eliminarPedido: async (id: number) => {
+        try {
+            return await PedidoApi.deletePedido(id).then((response) => {
+                return response;
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
 }

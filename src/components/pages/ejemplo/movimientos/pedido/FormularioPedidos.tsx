@@ -31,11 +31,11 @@ function FormularioPedidos({formulario = undefined}: FormularioPedidoProps) {
                 dispatch(crearPedidoNuevo(formulario.values.id));
             })
         } catch (e) {
-            console.error("Error al buscar el pedido");
+            Mensajes.error("Error al buscar el pedido");
         }
     }
 
-    const toogleBuscar = () => {
+    const toggleBuscar = () => {
         try {
             dispatch(cambiarBuscando());
         } catch (e) {
@@ -44,29 +44,29 @@ function FormularioPedidos({formulario = undefined}: FormularioPedidoProps) {
     }
 
     return (
-        <FormularioFormik formulario={formulario} etiqueta={"pedido"} editando={editando}>
+        <FormularioFormik formulario={formulario} etiqueta={`pedido`} editando={editando}>
             <Row>
                 <Col>
-                    <InputFormik formulario={formulario} onBlur={buscarPedido} onSearch={toogleBuscar}
+                    <InputFormik formulario={formulario} onBlur={buscarPedido} onSearch={toggleBuscar}
                                  clave={"id"} etiqueta={"Código"} placeholder={"Código"} type="number"/>
                 </Col>
                 <Col>
-                    <InputFormik formulario={formulario} clave={"total"} etiqueta={"Total"} placeholder={"Total"}/>
+                    <InputFormik formulario={formulario} clave={"total"} etiqueta={"Total"} placeholder={"Total"} type="number"/>
                 </Col>
                 <Col>
                     <InputFormik formulario={formulario} clave={"discountedTotal"} etiqueta={"Descuento"}
-                                 placeholder={"Descuento total"}/>
+                                 placeholder={"Descuento total"} type="number"/>
                 </Col>
                 <Col>
-                    <InputFormik formulario={formulario} clave={"userId"} etiqueta={"Cliente"} placeholder={"Cliente"}/>
+                    <InputFormik formulario={formulario} clave={"userId"} etiqueta={"Cliente"} placeholder={"Cliente"} type="number"/>
                 </Col>
                 <Col>
                     <InputFormik formulario={formulario} clave={"totalProducts"} etiqueta={"Total productos"}
-                                 placeholder={"Total productos"}/>
+                                 placeholder={"Total productos"} type="number"/>
                 </Col>
                 <Col>
                     <InputFormik formulario={formulario} clave={"totalQuantity"} etiqueta={"Cantidad total"}
-                                 placeholder={"Cantidad total"}/>
+                                 placeholder={"Cantidad total"} type="number"/>
                 </Col>
             </Row>
         </FormularioFormik>
