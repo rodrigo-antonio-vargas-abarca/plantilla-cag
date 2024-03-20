@@ -14,7 +14,16 @@ export default interface PedidoDto {
 export function crearPedido(
     {
         id = 0,
-        products = [],
+        products = [{
+            id: 1,
+            title: "Detalle dummy",
+            price: 50,
+            quantity: 5,
+            total: 250,
+            discountPercentage: 0,
+            discountedPrice: 0,
+            thumbnail: "https://dummyimage.com/600x400/000/fff"
+        }],
         total = 0,
         discountedTotal = 0,
         userId = 0,
