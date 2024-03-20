@@ -1,11 +1,12 @@
 interface MensajeErrorFormikProps {
     formulario: any;
     clave: string;
+    muestraError?: boolean;
 }
 
-export const MensajeErrorFormik = ({formulario, clave}: MensajeErrorFormikProps) => {
+export const MensajeErrorFormik = ({formulario, clave, muestraError = true}: MensajeErrorFormikProps) => {
 
-    const tieneErrores = formulario.touched[clave] && formulario.errors[clave];
+    const tieneErrores = muestraError && formulario.touched[clave] && formulario.errors[clave];
 
     const input = document.querySelector(`[name=${clave}], select[name=${clave}], textarea[name=${clave}]`);
 
@@ -19,7 +20,7 @@ export const MensajeErrorFormik = ({formulario, clave}: MensajeErrorFormikProps)
 
     return (
         <div>
-            {tieneErrores && <div>{formulario.errors[clave]}</div>}
+            {tieneErrores && <div className={"input-label-error"}>{formulario.errors[clave]}</div>}
         </div>
     );
 };

@@ -10,7 +10,8 @@ interface InputFormikProps extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder?: string;
     onChange?: (value: any) => void;
     onBlur?: (value: any) => void;
-    onSearch?: () => void;
+    eventoBuscar?: () => void;
+    muestraError?: boolean;
 }
 
 const InputFormik = ({
@@ -20,7 +21,8 @@ const InputFormik = ({
                          placeholder,
                          onChange,
                          onBlur,
-                         onSearch,
+                         eventoBuscar,
+                         muestraError,
                          ...rest
                      }: InputFormikProps) => {
 
@@ -40,7 +42,7 @@ const InputFormik = ({
 
     return (
         <div className={"mb-1"}>
-            {etiqueta && <label className={"font-weight-light"}>{etiqueta}</label>}
+            {etiqueta && <label className={"input-label"}>{etiqueta}</label>}
             <div className="input-group">
                 <input
                     {...rest}
@@ -51,9 +53,9 @@ const InputFormik = ({
                     onBlur={handleBlur}
                     value={formulario.values[clave]}
                 />
-                {onSearch && <Boton icono={Iconos.BUSCAR} onClick={onSearch}/>}
+                {eventoBuscar && <Boton icono={Iconos.BUSCAR} onClick={eventoBuscar} className={"input-action-btn"}/>}
             </div>
-            <MensajeErrorFormik formulario={formulario} clave={clave}/>
+            <MensajeErrorFormik formulario={formulario} clave={clave} muestraError={muestraError}/>
         </div>
     );
 };

@@ -8,9 +8,19 @@ interface TextareaFormikProps extends TextareaHTMLAttributes<HTMLTextAreaElement
     placeholder?: string;
     onChange?: (value: any) => void;
     onBlur?: (value: any) => void;
+    muestraError?: boolean;
 }
 
-const TextareaFormik = ({formulario, clave, etiqueta,placeholder, onChange, onBlur, ...rest}: TextareaFormikProps) => {
+const TextareaFormik = ({
+                            formulario,
+                            clave,
+                            etiqueta,
+                            placeholder,
+                            onChange,
+                            onBlur,
+                            muestraError,
+                            ...rest
+                        }: TextareaFormikProps) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         formulario.handleChange(e);
@@ -38,7 +48,7 @@ const TextareaFormik = ({formulario, clave, etiqueta,placeholder, onChange, onBl
                 onBlur={handleBlur}
                 value={formulario.values[clave]}
             />
-            <MensajeErrorFormik formulario={formulario} clave={clave}/>
+            <MensajeErrorFormik formulario={formulario} clave={clave} muestraError={muestraError}/>
         </div>
     );
 };

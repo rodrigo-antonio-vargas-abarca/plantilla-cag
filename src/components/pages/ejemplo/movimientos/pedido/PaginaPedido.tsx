@@ -90,6 +90,7 @@ function PaginaPedido({}: PaginaPedidoProps) {
     const limpiarPedidoSeleccionado = () => {
         try {
             dispatch(seleccionarPedido(null));
+            formulario.resetForm();
         } catch (e) {
             Mensajes.error("Error al limpiar el pedido");
         }
