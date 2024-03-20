@@ -19,11 +19,11 @@ const configuracionesTabla: TablaProps = {
     encabezados: [
         {etiqueta: "ID", ancho: 5},
         {etiqueta: "Artículo", ancho: 20},
-        {etiqueta: "Precio", ancho: 10},
         {etiqueta: "Cantidad", ancho: 10},
-        {etiqueta: "Total", ancho: 10},
+        {etiqueta: "Precio", ancho: 10},
         {etiqueta: "% Descuento", ancho: 10},
         {etiqueta: "Descuento", ancho: 10},
+        {etiqueta: "Total", ancho: 10},
         {etiqueta: "Acciones", ancho: 10}
     ],
     cantidadElementos: 10,
@@ -53,11 +53,11 @@ function TablaDetallesPedido({}: ArticulosPedidoProps) {
                 <tr key={detallePedido.id}>
                     <td>{detallePedido.id}</td>
                     <td>{detallePedido.title}</td>
-                    <td>{detallePedido.price}</td>
                     <td>{detallePedido.quantity}</td>
-                    <td>{detallePedido.total}</td>
+                    <td>{detallePedido.price}</td>
                     <td>{detallePedido.discountPercentage}</td>
                     <td>{detallePedido.discountedPrice}</td>
+                    <td>{detallePedido.total}</td>
                     <td>
                         <Boton icono={Iconos.EDITAR} onClick={() => editarDetalle(detallePedido.id)}/>
                         <Boton icono={Iconos.ELIMINAR} color={Colores.PELIGRO}

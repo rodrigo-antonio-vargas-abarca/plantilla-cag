@@ -10,6 +10,7 @@ interface SelectFormikProps extends SelectHTMLAttributes<HTMLSelectElement> {
     placeholder?: string;
     onChange?: (value: any) => void;
     onBlur?: (value: any) => void;
+    muestraError?: boolean;
 }
 
 const SelectFormik = ({
@@ -20,6 +21,7 @@ const SelectFormik = ({
                           placeholder,
                           onChange,
                           onBlur,
+                          muestraError,
                           ...rest
                       }: SelectFormikProps) => {
 
@@ -59,7 +61,7 @@ const SelectFormik = ({
                     </option>
                 ))}
             </select>
-            <MensajeErrorFormik formulario={formulario} clave={clave}/>
+            <MensajeErrorFormik formulario={formulario} clave={clave} muestraError={muestraError}/>
         </div>
     );
 };
