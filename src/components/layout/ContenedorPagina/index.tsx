@@ -4,7 +4,7 @@ import EncabezadoPagina from "@commonComponents/EncabezadoPagina";
 import React, {useEffect} from "react";
 import {Row} from "reactstrap";
 
-export const ContenedorPagina = ({titulo, eventos, children}: ContenedorPaginaProps) => {
+export const ContenedorPagina = ({titulo, eventos, triggerActualizaEventos = false, children}: ContenedorPaginaProps) => {
 
     const {setEventoLimpiarPagina, setEventoGuardarPagina, setEventoEliminarPagina} = useAsignarAccionesPagina();
 
@@ -28,7 +28,7 @@ export const ContenedorPagina = ({titulo, eventos, children}: ContenedorPaginaPr
 
         }
 
-    }, []);
+    }, [triggerActualizaEventos]);
 
     return (
         <>

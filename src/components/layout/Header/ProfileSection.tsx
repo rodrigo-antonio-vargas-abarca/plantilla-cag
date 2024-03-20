@@ -19,9 +19,9 @@ export const ProfileSection = () => {
       <Media className="profile-media">
         <Media body className="d-xl-block d-none box-col-none">
           <div className="d-flex align-items-center gap-2">
-            <span className="text-nowrap">Alex Mora </span><i className="middle fa fa-angle-down"> </i>
+            <span className="text-nowrap">Usuario </span><i className="middle fa fa-angle-down"> </i>
           </div>
-          <p className="mb-0 font-roboto">Admin</p>
+          <p className="mb-0 font-roboto">Rol</p>
         </Media>
       </Media>
       <ul className="profile-dropdown onhover-show-div">

@@ -10,6 +10,7 @@ export interface EventosPaginaProps {
 
 export interface ContenedorPaginaProps {
     titulo: string;
-    eventos?: EventosPaginaProps
+    eventos?: EventosPaginaProps;
+    triggerActualizaEventos? : any; // Objeto que determina cuando se renderizan los eventos
     children: React.ReactNode;
 }

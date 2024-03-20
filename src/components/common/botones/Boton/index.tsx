@@ -16,7 +16,7 @@ interface BotonIconoProps {
 
 const Boton = ({color = Colores.PRIMARIO, tamano= TamanoBoton.REGULAR, icono, relleno = true, texto, onClick} : BotonIconoProps) => {
     return (
-        <Button outline={!relleno} className={`btn mx-2`} color={color} size={tamano} onClick={onClick}>
+        <Button outline={!relleno} className={`btn mx-2`} color={color} size={tamano} onClick={onClick} tabIndex={-1}>
             {texto && <span className="ml-2">{texto}</span>}
             {icono && <Icono icono={icono}></Icono>}
         </Button>
