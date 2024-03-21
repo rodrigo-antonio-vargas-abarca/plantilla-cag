@@ -5,7 +5,7 @@ const default_color = ConfigDB.data.color.primary_color;
 const secondary_color = ConfigDB.data.color.secondary_color;
 
 const initialState = {
-  layout: "horizontal-wrapper",
+  layout: "compact-wrapper",
   openCus: false,
   sidebarIconType: "stroke",
   colorBackground1: default_color,

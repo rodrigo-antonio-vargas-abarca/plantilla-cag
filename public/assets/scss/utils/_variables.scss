@@ -241,7 +241,7 @@ $form-input-bg-color : $white;
 $tour-color: var(--theme-default);
 
 //sidabr main settings
-$sidebar-width: 255px;
+$sidebar-width: 205px;
 $sidebar-position: fixed;
 $sidebar-background-color: $white;
 $sidebar-shadow: 0 0 11px rgba(69, 110, 243, 0.13);
@@ -265,10 +265,10 @@ $sidebar-profile-img-shadow: 0 0 15px rgba(68, 102, 242, 0.3);
 $sidebar-menu-padding: 15px;
 $sidebar-menu-list-style: none;
 $sidebar-menu-list-margin: 0;
-$sidebar-icon-size: 14px;
-$sidebar-icon-margin: 14px;
+$sidebar-icon-size: 12px;
+$sidebar-icon-margin: 12px;
 $sidebar-icon-stroke-width: 3px;
-$sidebar-font-size: 14px;
+$sidebar-font-size: 12px;
 $sidebar-letter-specing: 0.5px;
 $sidebar-txt-transform: capitalize;
 $sidebar-font-weight: 600;
@@ -286,7 +286,7 @@ $sidebar-open-icon: "\f107";
 $sidebar-close-icon: "\f105";
 $sidebar-icon-font-family: $font-awesome;
 $sidebar-height: calc(100vh - 115px);
-$sidebar-compact-width: 265px;
+$sidebar-compact-width: 255px;
 
 //Header settings
 $main-header-position: fixed;
@@ -295,7 +295,7 @@ $main-header-shadow: 0 0 20px rgba($semi-dark, 0.1);
 $main-header-shadow-1: 0px 4px 40px rgba(39, 32, 120, 0.1);
 
 //page settings
-$page-body-padding : 5px 10px;
+$page-body-padding : 10px 20px;
 $page-body-bg-color: $light-color;
 $page-body-margin-bottom: 0px; 
 $page-title-padding : 10px 20px;
@@ -314,9 +314,9 @@ $breadcrumb-content: "/";
 
 //main header left settings
 $header-left-bg-color : $white;
-$main-header-padding : 27px 22px;
+$main-header-padding : 27px 50px;
 $main-header-z-index : 8;
-$header-wrapper-padding: 13px 30px;
+$header-wrapper-padding: 8px 30px;
 $header-wrapper-nav-right : 0px;
 $header-wrapper-nav-icon-size : 20px;
 $header-wrapper-nav-icon-color : $theme-font-color;

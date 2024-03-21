@@ -4260,3 +4260,95 @@
   }
 
 }
+
+.page-wrapper {
+  &.compact-wrapper {
+    .page-body-wrapper {
+      div {
+        &.sidebar-wrapper {
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+
+          right: -50 !important;
+
+          .back-btn {
+            display: inline-block;
+            float: right;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+          }
+
+          .toggle-sidebar {
+            display: none;
+          }
+
+          .sidebar-main {
+            .sidebar-links {
+              .simplebar-wrapper {
+                .simplebar-mask {
+                  .simplebar-content-wrapper {
+                    .simplebar-content {
+                      > li {
+                        a {
+                          color: $light;
+
+                          svg {
+                            stroke: #aa1111;
+                            margin-right: 8px !important;
+                            height: 1em;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          }
+        }
+      }
+    }
+  }
+
+  .header-logo-wrapper {
+    .toggle-sidebar {
+      display: block !important;
+      position: relative;
+      right: 0;
+      top: 0;
+
+      svg {
+        stroke: #00AC46 !important;
+      }
+
+    }
+  }
+
+  .page-wrapper {
+    &.compact-wrapper {
+      .page-body-wrapper {
+
+        margin-left: 0 !important;
+
+        div {
+          &.sidebar-wrapper {
+            &.close_icon {
+              transform: translate(-285px);
+
+              .logo-wrapper {
+
+              }
+            }
+          }
+
+          &.page-body {
+            margin-left: 0 !important;
+            // padding: $page !important;
+          }
+        }
+      }
+    }
+  }
+

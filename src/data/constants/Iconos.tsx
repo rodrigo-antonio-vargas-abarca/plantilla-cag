@@ -9,7 +9,7 @@ import {
     faEye,
     faEyeSlash,
     faFileExcel,
-    faFilePdf, faFilter, faHashtag, faHome, faImages, faInfo, faLink,
+    faFilePdf, faFilter, faHamburger, faHashtag, faHome, faImages, faInfo, faLink,
     faList, faLocation, faLock, faMoon, faPaperPlane, faPenToSquare, faPhone, faPlus,
     faPrint, faQuestion, faRotate,
     faSave, faSearch, faShop, faShuffle, faSort,
@@ -24,7 +24,7 @@ import {
 
 export type tipoIconos = IconDefinition;
 
-export interface IconoProps {
+export interface IconoProps extends React.HTMLAttributes<HTMLElement> {
     icono: tipoIconos;
     color?: string;
     tamano?: string;
@@ -101,5 +101,6 @@ export const Iconos = {
     AVISOS: faBell,
     PREGUNTA: faQuestion,
     ALERTA: faTriangleExclamation,
-    CALCULADORA: faCalculator
+    CALCULADORA: faCalculator,
+    MENU: faBars
 };
