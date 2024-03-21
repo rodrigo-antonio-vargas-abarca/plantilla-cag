@@ -27,3 +27,12 @@
 /**=====================
     5.1 Footer CSS Ends
 ==========================**/
+
+/*=======Custom CAG css=======*/
+.page-wrapper {
+  &.compact-wrapper {
+    .footer {
+      margin-left: 0 !important;
+    }
+  }
+}

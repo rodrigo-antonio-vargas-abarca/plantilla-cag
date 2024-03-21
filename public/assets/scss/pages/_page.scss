@@ -3,21 +3,21 @@
 ==========================**/
 /*test Nav bar color */
 $page-name: theme,
-  primary,
-  secondary,
-  success,
-  danger,
-  info,
-  dark,
-  warning;
+primary,
+secondary,
+success,
+danger,
+info,
+dark,
+warning;
 $page-color: var(--theme-default),
-  var(--theme-default),
-  $secondary-color,
-  $success-color,
-  $danger-color,
-  $info-color,
-  $dark-color,
-  $warning-color;
+var(--theme-default),
+$secondary-color,
+$success-color,
+$danger-color,
+$info-color,
+$dark-color,
+$warning-color;
 
 @each $var in $page-name {
   $i: index($page-name, $var);
@@ -40,21 +40,21 @@ $page-color: var(--theme-default),
 }
 
 $paginations-name: primary,
-  secondary,
-  success,
-  danger,
-  warning,
-  info,
-  light,
-  dark;
+secondary,
+success,
+danger,
+warning,
+info,
+light,
+dark;
 $paginations-colors: $light-primary,
-  $light-secondary,
-  $light-success,
-  $light-danger,
-  $light-warning,
-  $light-info,
-  $light-white,
-  $light-dark;
+$light-secondary,
+$light-success,
+$light-danger,
+$light-warning,
+$light-info,
+$light-white,
+$light-dark;
 
 @each $var in $paginations-name {
   $i: index($paginations-name, $var);
@@ -96,7 +96,7 @@ $paginations-colors: $light-primary,
 
 .pagination {
 
-  @media (max-width:339px) {
+  @media (max-width: 339px) {
     justify-content: center;
   }
 

@@ -480,32 +480,87 @@
 /*=======Custom CAG css=======*/
 body {
   .page-wrapper {
-    .page-header {
-      .header-wrapper {
-        padding-top: 4px !important;
-        padding-bottom: 4px !important;
+    &.compact-wrapper {
+      .page-header {
+        margin-left: 0 !important;
+        width: 100vw !important;
 
-        .nav-right {
-          .nav-menus {
-            li {
+        .header-wrapper {
+          padding-top: 4px !important;
+          padding-bottom: 4px !important;
 
-              svg {
-                height: 18px !important;
+          .nav-right {
+            .nav-menus {
+              li {
 
-                path {
-                  color: $dark-color;
-                  opacity: .8;
+                svg {
+                  height: 18px !important;
+
+                  path {
+                    color: $dark-color;
+                    opacity: .8;
+                  }
                 }
               }
             }
+
+            > ul {
+              > li {
+                padding: 8px !important;
+              }
+            }
+
+            .search-form {
+              background-color: transparent !important;
+
+              .input-icon {
+                svg {
+                  height: 18px !important;
+                }
+              }
+
+              .input-show {
+                input {
+                  top: 45px !important;
+                  left: -125px !important;
+                  z-index: 100 !important;
+                }
+              }
+
+              .Typeahead-menu {
+                top: 85px !important;
+                left: -140px !important;
+              }
+
+            }
+
+            .profile-nav {
+              .profile-dropdown {
+                left: -65px !important;
+              }
+            }
+
           }
 
-          > ul {
-            > li {
-              padding: 8px !important;
+          .header-logo-wrapper {
+            display: flex;
+
+            .toggle-sidebar {
+              align-self: center !important;
+              margin-right: 8px;
+            }
+
+            .logo-wrapper {
+              display: inline-block !important;
             }
           }
+
         }
+
+        &.close_icon {
+          margin-left: 0 !important;
+        }
+
       }
     }
   }
@@ -546,6 +601,16 @@ body {
               }
             }
           }
+
+          .header-logo-wrapper {
+            .toggle-sidebar {
+              svg {
+                stroke: $dark-gray !important;
+                opacity: .8;
+              }
+            }
+          }
+
         }
       }
     }

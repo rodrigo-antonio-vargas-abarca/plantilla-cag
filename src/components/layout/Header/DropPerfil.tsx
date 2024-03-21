@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import {DarkMood} from "@layouts/Header/DarkMood";
 import MaximizeScreen from "@layouts/Header/Maximize";
 
-export const ProfileSection = () => {
+export const DropPerfil = () => {
   const router = useRouter();
   
   const LogOutUser = () => {

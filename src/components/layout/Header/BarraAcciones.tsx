@@ -1,19 +1,21 @@
 import {Col} from "reactstrap";
-import {ProfileSection} from "./ProfileSection";
-import {ResponsiveSearch} from "./ResponsiveSearch";
+import {DropPerfil} from "./DropPerfil";
+import {BotonBusqueda} from "./BotonBusqueda";
 import {BotonLimpiar} from "@layouts/Header/AccionesPagina/BotonLimpiar";
 import {BotonGuardar} from "@layouts/Header/AccionesPagina/BotonGuardar";
 import {BotonEliminar} from "@layouts/Header/AccionesPagina/BotonEliminar";
+import React from "react";
 
-export const Profile = () => {
+export const BarraAcciones = () => {
     return (
         <Col xl="7" lg="8" md="7" xs="8" className="nav-right pull-right right-header p-0 ms-auto">
             <ul className="nav-menus">
-                <ResponsiveSearch/>
+                <div/>
                 <BotonLimpiar/>
                 <BotonGuardar/>
                 <BotonEliminar/>
-                <ProfileSection/>
+                <BotonBusqueda/>
+                <DropPerfil/>
             </ul>
         </Col>
     );

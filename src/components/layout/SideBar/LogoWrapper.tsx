@@ -13,7 +13,7 @@ export const LogoWrapper = () => {
   return (
     <>
       <div className="logo-wrapper">
-        <Link href={`/${i18LangStatus}/sample_page`}>
+        <Link href={`/inicio`}>
           <img className="img-fluid" src={`${ImagePath}/logo/logo.png`} alt="" />
         </Link>
         <div className="back-btn" onClick={()=>dispatch(handleResponsiveToggle())}>
