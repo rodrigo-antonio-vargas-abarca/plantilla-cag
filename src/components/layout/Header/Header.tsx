@@ -1,5 +1,5 @@
-import { MobileView } from "./MobileView";
-import { Profile } from "./Profile";
+import { BotonMenu } from "./BotonMenu";
+import { BarraAcciones } from "./BarraAcciones";
 import { Row } from "reactstrap";
 import { useAppSelector } from "@hooks/common/State";
 import { useEffect } from "react";
@@ -22,8 +22,8 @@ const Header = () => {
   return (
     <div className={`page-header ${toggleSidebar ? "close_icon" : ""}`} id="page-headers">
       <Row className="header-wrapper m-0">
-        <MobileView />
-        <Profile />
+        <BotonMenu />
+        <BarraAcciones />
       </Row>
     </div>
   );
