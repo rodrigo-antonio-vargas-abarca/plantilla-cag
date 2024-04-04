@@ -9,7 +9,7 @@ import Colores from "@data/constants/Colores";
 interface CommonCardProps {
     titulo: string;
     subtitulo?: SpanType[];
-    icono?: JSX.Element;
+    icono?: React.ReactNode;
     claseCard?: string;
     claseTitulo?: string;
     claseHeader?: string;
@@ -32,7 +32,7 @@ const CommonCard = ({titulo, subtitulo, icono, claseCard, claseTitulo, claseHead
 
     return (
         <Card className={claseCard ? claseCard : ""}>
-            <CardHeader className={claseHeader ? claseHeader : ""}>
+            {(titulo) && <CardHeader className={claseHeader ? claseHeader : ""}>
                 <div className="row">
                     <div className="col-11">
                         <h4 className={claseTitulo ? claseTitulo : ""}>{icono && icono}{titulo}</h4>
@@ -58,7 +58,7 @@ const CommonCard = ({titulo, subtitulo, icono, claseCard, claseTitulo, claseHead
                         )}
                     </div>
                 </div>
-            </CardHeader>
+            </CardHeader>}
             <CardBody className={abierto ? '' : 'd-none'}>
                 <Collapse isOpen={abierto} styleclass="m-0 p-0">
                     {children}
